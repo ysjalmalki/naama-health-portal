@@ -1,0 +1,1 @@
+{"name":"naama-health-portal","version":"1.0.0","private":true,"description":"بوابة نعامة للصحة المدرسية","scripts":{"start":"node server.js"},"engines":{"node":">=22.13.0"}}
