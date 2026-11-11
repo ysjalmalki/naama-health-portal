@@ -45,6 +45,51 @@ const lessons=[['🆘','الخطوة الأولى: اطلب المساعدة','�
 $('aidLessons').innerHTML=lessons.map((l,i)=>`<div class="card"><div class="emoji">${l[0]}</div><span class="chip">الدرس ${i+1}</span><h3>${l[1]}</h3><p>${l[2]}</p><div class="poster-illustration"><span>${l[0]}</span><span>➡️</span><span>👩‍🏫</span></div></div>`).join('');
 const vids=[['هيئة الهلال الأحمر السعودي','https://www.youtube.com/results?search_query='+encodeURIComponent('هيئة الهلال الأحمر السعودي الإسعافات الأولية')],['منظمة الصحة العالمية','https://www.youtube.com/results?search_query='+encodeURIComponent('WHO first aid educational videos')],['الإسعافات الأولية للأطفال','https://www.youtube.com/results?search_query='+encodeURIComponent('الإسعافات الأولية للأطفال الهلال الأحمر')]];
 $('videos').innerHTML=vids.map(v=>`<div class="card"><div class="emoji">🎥</div><h3>${v[0]}</h3><p>افتح نتائج الفيديو التعليمية واختر مادة صادرة عن جهة موثوقة.</p><a href="${v[1]}" target="_blank" rel="noopener noreferrer">🔗 مشاهدة المصادر</a></div>`).join('');
+  
+const monthlyPrograms = [
+  ["جمادى الآخرة", "أساسيات الإسعافات الأولية", "تعرف على كيفية طلب المساعدة والتصرف بأمان."],
+  ["رجب", "سلامة الجروح البسيطة", "تعلم متى تطلب مساعدة المعلم أو ولي الأمر."],
+  ["شعبان", "الوقاية من الاختناق", "تعرف على مخاطر الأجسام الصغيرة أثناء اللعب."],
+  ["رمضان", "التغذية الصحية", "تعرف على أهمية الغذاء المتوازن."],
+  ["شوال", "السلامة أثناء اللعب", "تعرف على قواعد اللعب الآمن."],
+  ["ذو القعدة", "الوقاية من الإجهاد الحراري", "تعرف على أهمية الظل وشرب الماء."],
+  ["ذو الحجة", "السلامة في الرحلات", "تعرف على قواعد السلامة في الأماكن المزدحمة."]
+];
+
+const hijriMonth = new Intl.DateTimeFormat(
+  "ar-SA-u-ca-islamic-umalqura",
+  { month: "long", timeZone: "Asia/Riyadh" }
+).format(new Date());
+
+const monthlySection = document.createElement("div");
+monthlySection.className = "card";
+
+const monthlyTitle = document.createElement("h3");
+monthlyTitle.textContent = "📅 البرنامج الصحي الشهري";
+monthlySection.appendChild(monthlyTitle);
+
+
+const currentMonthProgram = monthlyPrograms.find(
+  program => program[0] === hijriMonth
+);
+
+if (currentMonthProgram) {
+  const currentNotice = document.createElement("h4");
+  currentNotice.textContent =
+    "🌟 برنامج الشهر الحالي: " + currentMonthProgram[1];
+  monthlySection.appendChild(currentNotice);
+}
+
+for (const program of monthlyPrograms) {
+
+  const item = document.createElement("p");
+  item.textContent =
+    program[0] + " — " + program[1] + ": " + program[2];
+  monthlySection.appendChild(item);
+}
+
+document.getElementById("aidLessons")?.prepend(monthlySection);
+
 const quizItems=[['هل ينتقل السرطان بالمصافحة؟',['نعم','لا','أحيانًا'],1,'السرطان غير معدٍ.'],['متى نغسل أيدينا؟',['قبل الطعام وبعد الحمام','مرة واحدة أسبوعيًا','فقط عند رؤية الأوساخ'],0,'غسل اليدين بانتظام يساعد على الوقاية من العدوى.'],['ما أول خطوة عند رؤية مصاب؟',['التجمهر حوله','التأكد من سلامة المكان وطلب بالغ','إعطاؤه دواءً'],1,'سلامة المكان وطلب المساعدة أولًا.'],['عند نزيف الأنف، أين نميل الرأس؟',['للخلف','للأمام قليلًا','لا يهم'],1,'الميل للأمام يقلل ابتلاع الدم.'],['هل نضع معجون أسنان على الحرق؟',['نعم','لا','أحيانًا'],1,'لا تضع معجون أسنان أو زيوتًا على الحروق.']];
 let qi=0,score=0,answered=false;function drawQuiz(target,aid=false){const list=aid?quizItems.slice(2):quizItems;let pos=aid?qiAid:qi;let total=aid?scoreAid:score;let q=list[pos];$(target).innerHTML=`<div class="chip">السؤال ${pos+1} من ${list.length} • النقاط ${total}</div><div class="progress"><div style="width:${(pos+1)/list.length*100}%"></div></div><h3>${q[0]}</h3>${q[1].map((a,i)=>`<button class="qopt" id="${target}opt${i}" onclick="answerQuiz('${target}',${i})">${esc(a)}</button>`).join('')}<p id="${target}feedback" role="status"></p><button class="btn" id="${target}next" style="display:none" onclick="nextQuiz('${target}')">التالي ←</button>`}
 let qiAid=0,scoreAid=0,answeredAid=false;function answerQuiz(target,i){let aid=target==='aidQuiz',pos=aid?qiAid:qi,q=(aid?quizItems.slice(2):quizItems)[pos];if(aid?answeredAid:answered)return;if(aid){answeredAid=true;if(i===q[2])scoreAid++}else{answered=true;if(i===q[2])score++}q[1].forEach((_,j)=>{let e=$(target+'opt'+j);e.disabled=true;if(j===q[2])e.classList.add('good');else if(j===i)e.classList.add('bad')});$(target+'feedback').textContent=(i===q[2]?'أحسنت! ':'حاول التعلم من الإجابة الصحيحة. ')+q[3];$(target+'next').style.display='inline-block'}
