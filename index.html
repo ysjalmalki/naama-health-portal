@@ -125,6 +125,42 @@ guidance.textContent =
   "🛡️ عند حدوث طارئ، حافظ على سلامتك واطلب مساعدة شخص بالغ أو اتصل بالطوارئ.";
 
 details.append(heading, content, guidance);
+
+if (program[1] === "أساسيات الإسعافات الأولية") {
+  const visualLesson = document.createElement("section");
+  visualLesson.style.cssText =
+    "background:#f0f9ff;padding:16px;border-radius:14px;margin:16px 0;text-align:right;";
+
+  const lessonTitle = document.createElement("h3");
+  lessonTitle.textContent = "🎓 كيف أتصرف عند حدوث طارئ؟";
+  visualLesson.appendChild(lessonTitle);
+
+  const steps = [
+    ["🛡️", "أحافظ على سلامتي",
+     "أبتعد عن النار والكهرباء والأماكن الخطرة."],
+    ["🙋", "أطلب المساعدة",
+     "أبلغ المعلم أو أحد البالغين فورًا."],
+    ["🚑", "أبلغ الإسعاف",
+     "عند وجود حالة طبية طارئة أطلب الاتصال بالرقم 997."]
+  ];
+
+  for (const [symbol, title, explanation] of steps) {
+    const card = document.createElement("div");
+    card.style.cssText =
+      "background:white;padding:14px;margin:12px 0;border-radius:12px;border:1px solid #cde7f5;";
+
+    const heading = document.createElement("h4");
+    heading.textContent = symbol + " " + title;
+
+    const description = document.createElement("p");
+    description.textContent = explanation;
+
+    card.append(heading, description);
+    visualLesson.appendChild(card);
+  }
+
+  details.appendChild(visualLesson);
+}
   
 if (program[1] === "أساسيات الإسعافات الأولية") {
   const emergency = document.createElement("div");
