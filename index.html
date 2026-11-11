@@ -158,6 +158,121 @@ if (program[1] === "أساسيات الإسعافات الأولية") {
 }
 
 
+if (program[1] === "أساسيات الإسعافات الأولية") {
+  const questions = [
+    {
+      q: "ما أول تصرف عند مشاهدة حادث؟",
+      a: ["الاقتراب بسرعة", "التأكد من سلامة المكان", "التصوير"],
+      correct: 1,
+      feedback: "سلامتك أولاً، ابتعد عن مصادر الخطر."
+    },
+    {
+      q: "ما رقم الهلال الأحمر السعودي؟",
+      a: ["937", "998", "997"],
+      correct: 2,
+      feedback: "997 هو رقم الإسعاف السعودي."
+    },
+    {
+      q: "ماذا تفعل عند مشاهدة حريق؟",
+      a: ["تبتعد وتبلغ شخصاً بالغاً", "تدخل مكان الحريق", "تختبئ"],
+      correct: 0,
+      feedback: "ابتعد عن الخطر واطلب المساعدة فوراً."
+    },
+    {
+      q: "ما رقم الدفاع المدني السعودي؟",
+      a: ["998", "937", "997"],
+      correct: 0,
+      feedback: "998 هو رقم الدفاع المدني."
+    },
+    {
+      q: "ما رقم وزارة الصحة للاستشارات الطبية؟",
+      a: ["997", "937", "998"],
+      correct: 1,
+      feedback: "937 للاستشارات والخدمات الصحية."
+    }
+  ];
+
+  const quizBox = document.createElement("div");
+  quizBox.style.cssText =
+    "background:#eef8ff;padding:15px;border-radius:12px;margin-top:16px;";
+
+  let index = 0;
+  let score = 0;
+
+  function showQuestion() {
+    quizBox.replaceChildren();
+
+    if (index >= questions.length) {
+      const result = document.createElement("h3");
+      result.textContent =
+        "🏆 نتيجتك: " + score + " من " + questions.length;
+      quizBox.appendChild(result);
+
+      const retry = document.createElement("button");
+      retry.textContent = "إعادة الاختبار";
+      retry.onclick = () => {
+        index = 0;
+        score = 0;
+        showQuestion();
+      };
+      quizBox.appendChild(retry);
+      return;
+    }
+
+    const question = questions[index];
+    const title = document.createElement("h4");
+    title.textContent =
+      "السؤال " + (index + 1) + ": " + question.q;
+    quizBox.appendChild(title);
+
+    const feedback = document.createElement("p");
+    const next = document.createElement("button");
+    next.textContent = index === questions.length - 1
+      ? "عرض النتيجة" : "السؤال التالي";
+    next.style.display = "none";
+
+    question.a.forEach((answer, i) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.textContent = answer;
+      btn.style.cssText =
+        "display:block;margin:8px 0;padding:10px;width:100%;";
+
+      btn.onclick = () => {
+        if (i === question.correct) {
+          score++;
+          feedback.textContent =
+            "✅ إجابة صحيحة! " + question.feedback;
+        } else {
+          feedback.textContent =
+            "❌ إجابة غير صحيحة. " + question.feedback;
+        }
+
+        quizBox.querySelectorAll("button").forEach(
+          b => b.disabled = true
+        );
+        next.disabled = false;
+        next.style.display = "block";
+      };
+
+      quizBox.appendChild(btn);
+    });
+
+    next.onclick = () => {
+      index++;
+      showQuestion();
+    };
+
+    quizBox.append(feedback, next);
+  }
+
+  const quizTitle = document.createElement("h3");
+  quizTitle.textContent = "🧠 اختبر معلوماتك";
+  details.appendChild(quizTitle);
+  details.appendChild(quizBox);
+  showQuestion();
+}
+
 startButton.onclick = () => {
   const opening = details.style.display === "none";
   details.style.display = opening ? "block" : "none";
