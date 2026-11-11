@@ -104,6 +104,38 @@ for (const program of monthlyPrograms) {
 
   item.append(title, description);
   monthlySection.appendChild(item);
+  
+const startButton = document.createElement("button");
+startButton.textContent = "📚 ابدأ البرنامج";
+startButton.className = "btn";
+startButton.style.marginTop = "10px";
+
+const details = document.createElement("div");
+details.style.display = "none";
+details.style.marginTop = "12px";
+
+const heading = document.createElement("h4");
+heading.textContent = "📖 " + program[1];
+
+const content = document.createElement("p");
+content.textContent = program[2];
+
+const guidance = document.createElement("p");
+guidance.textContent =
+  "🛡️ عند حدوث طارئ، حافظ على سلامتك واطلب مساعدة شخص بالغ أو اتصل بالطوارئ.";
+
+details.append(heading, content, guidance);
+
+startButton.onclick = () => {
+  const opening = details.style.display === "none";
+  details.style.display = opening ? "block" : "none";
+  startButton.textContent = opening
+    ? "إغلاق البرنامج"
+    : "📚 ابدأ البرنامج";
+};
+
+item.append(startButton, details);
+
 }
 
 document.getElementById("aidLessons")?.prepend(monthlySection);
