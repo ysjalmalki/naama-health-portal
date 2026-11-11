@@ -161,6 +161,21 @@ async function renderWorks() {
         "الصف: " + (work.grade || "غير محدد");
 
       card.append(title, student, grade);
+      
+if (work.has_file) {
+  const link = document.createElement("a");
+  link.textContent = "📎 عرض المرفق";
+  link.href =
+    "https://naama-health-api.ysjalmalki.workers.dev/api/files/" +
+    encodeURIComponent(work.id);
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.className = "btn";
+  link.style.display = "inline-block";
+  link.style.marginTop = "12px";
+  card.appendChild(link);
+}
+
       container.appendChild(card);
     }
   } catch (error) {
