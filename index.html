@@ -80,11 +80,29 @@ if (currentMonthProgram) {
   monthlySection.appendChild(currentNotice);
 }
 
-for (const program of monthlyPrograms) {
 
-  const item = document.createElement("p");
-  item.textContent =
-    program[0] + " — " + program[1] + ": " + program[2];
+for (const program of monthlyPrograms) {
+  const item = document.createElement("div");
+  const isCurrent = program[0] === hijriMonth;
+
+  item.style.padding = "14px";
+  item.style.margin = "10px 0";
+  item.style.borderRadius = "12px";
+  item.style.textAlign = "right";
+  item.style.background = isCurrent ? "#d9f5e8" : "#f1f5f9";
+  item.style.border = isCurrent
+    ? "2px solid #15946b"
+    : "1px solid #dce5eb";
+
+  const title = document.createElement("h4");
+  title.textContent =
+    (isCurrent ? "🌟 " : "📚 ") +
+    program[0] + " — " + program[1];
+
+  const description = document.createElement("p");
+  description.textContent = program[2];
+
+  item.append(title, description);
   monthlySection.appendChild(item);
 }
 
