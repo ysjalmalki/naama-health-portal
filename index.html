@@ -50,13 +50,57 @@ function nextQuiz(target){let aid=target==='aidQuiz',list=aid?quizItems.slice(2)
 function renderCert(){let name=esc($('certName').value.trim()||'........................');$('certPreview').innerHTML=`<div class="cert"><div class="emoji">🏅🌟🏅</div><h2>شهادة مشاركة</h2><p>مدرسة نعامة الابتدائية – تعليم جازان</p><h3>تُمنح إلى</h3><h2>${name}</h2><p>تقديرًا لـ ${esc($('certType').value)}</p><p>ضمن أنشطة بوابة نعامة للصحة المدرسية</p><p class="small">شهادة مشاركة تجريبية • العام الدراسي 1448هـ</p><p>الموجّه الصحي / يحيى سلمان المالكي</p><p>مدير المدرسة / عبدالله أحمد زيد</p></div>`}renderCert();
 function printBlock(id){let el=$(id);$('printarea').innerHTML=el.outerHTML;window.print();setTimeout(()=>$('printarea').innerHTML='',1200)}
 function addWork(){let name=$('studentName').value.trim(),title=$('workTitle').value.trim(),desc=$('workDesc').value.trim(),f=$('workFile').files[0];if(!name||!title){$('workMsg').textContent='اكتب اسم العرض وعنوان العمل أولًا.';return}if(f&&(!/^image\/(png|jpeg|webp)$/.test(f.type)||f.size>2*1024*1024)){$('workMsg').textContent='اختر صورة PNG أو JPG أو WebP بحجم لا يتجاوز 2 ميغابايت.';return}const work={name,title,desc,date:new Date().toLocaleDateString('ar-SA')};let list=read('works',[]);list.unshift(work);write('works',list.slice(0,30));$('workMsg').textContent='أُضيف العمل إلى المعرض المحلي فقط، ولم يُنشر على الإنترنت. الصورة للمعاينة المؤقتة ولا تُحفظ.';$('workFile').value='';renderWorks()}
-function renderWorks(){let w=read('works',[]);$('works').innerHTML=w.length?w.map((x,i)=>`<div class="card"><div class="emoji">🎨</div><h3>${esc(x.title)}</h3><p>${esc(x.desc)}</p><span class="chip">${esc(x.name)} • ${esc(x.date)}</span><p><button class="btn light" onclick="deleteWork(${i})">حذف</button></p></div>`).join(''):'<div class="empty">لا توجد أعمال على هذا الجهاز بعد. كن أول المشاركين! ✨</div>'}function deleteWork(i){let w=read('works',[]);w.splice(i,1);write('works',w);renderWorks()}renderWorks();
+//function renderWorks(){let w=read('works',[]);$('works').innerHTML=w.length?w.map((x,i)=>`<div class="card"><div class="emoji">🎨</div><h3>${esc(x.title)}</h3><p>${esc(x.desc)}</p><span class="chip">${esc(x.name)} • ${esc(x.date)}</span><p><button class="btn light" onclick="deleteWork(${i})">حذف</button></p></div>`).join(''):'<div class="empty">لا توجد أعمال على هذا الجهاز بعد. كن أول المشاركين! ✨</div>'}function deleteWork(i){let w=read('works',[]);w.splice(i,1);write('works',w);renderWorks()}renderWorks();
 const programTitles=['برنامج اليوم العالمي للسرطان','برنامج نظافة اليدين','برنامج صحة الفم والأسنان','برنامج الغذاء المتوازن','برنامج النشاط البدني','برنامج السلامة والإسعافات الأولية'];$('programCards').innerHTML=programTitles.map((x,i)=>`<div class="card"><div class="emoji">${['🎗️','🫧','🦷','🥗','🏃','🚑'][i]}</div><h3>${x}</h3><p>إذاعة صباحية • نشرة توعوية • نشاط صفّي • تقويم قصير • تقرير تنفيذ</p><button class="btn" onclick="go('${i===5?'firstaid':'bulletins'}')">استكشف المحتوى</button></div>`).join('');
 function reportData(){return {title:$('rTitle').value,date:$('rDate').value,count:$('rCount').value,details:$('rDetails').value,impact:$('rImpact').value}}function saveReport(){let d=reportData();if(!d.title.trim()){$('reportMsg').textContent='أدخل عنوان البرنامج.';return}let r=read('reports',[]);r.push(d);write('reports',r);$('reportMsg').textContent='تم حفظ تقريرك محليًا على هذا الجهاز.'}function download(name,content,type='text/plain;charset=utf-8'){let a=document.createElement('a'),url=URL.createObjectURL(new Blob([content],{type}));a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}function downloadReport(){let d=reportData();download('تقرير-صحي.txt',`مدرسة نعامة الابتدائية – تعليم جازان\nالعام 1448هـ\nعنوان البرنامج: ${d.title}\nالتاريخ: ${d.date}\nعدد المستفيدين: ${d.count}\nالأنشطة والشواهد: ${d.details}\nنتائج قياس الأثر: ${d.impact}\nإعداد الموجّه الصحي: يحيى سلمان المالكي`)}
 function saveAnnouncement(){write('announcement',$('announce').value);showAnnouncement()}function showAnnouncement(){$('announcementPreview').textContent=read('announcement','')||'لا يوجد إعلان محفوظ'}showAnnouncement();function stats(){$('statEvents').textContent=occasions.length;$('statWorks').textContent=read('works',[]).length;$('statReports').textContent=read('reports',[]).length}function backup(){download('naama-health-backup.json',JSON.stringify({works:read('works',[]),reports:read('reports',[]),announcement:read('announcement','')},null,2),'application/json')}function clearLocal(){if(confirm('هل تريد مسح الأعمال والتقارير والإعلان المحفوظة محليًا؟')){['works','reports','announcement'].forEach(k=>localStorage.removeItem(key+k));renderWorks();showAnnouncement();stats()}}stats();
 </script><script>
 // Replace the local-only student gallery with moderated shared submissions.
 async function addWork(){const display_name=document.getElementById('studentName').value.trim(),title=document.getElementById('workTitle').value.trim(),description=document.getElementById('workDesc').value.trim(),msg=document.getElementById('workMsg');if(!display_name||!title||!description){msg.textContent='يرجى تعبئة الاسم المستعار والعنوان والوصف';return}try{const r=await fetch('https://naama-health-api.ysjalmalki.workers.dev/api/works',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({display_name,title,description})});const j=await r.json();if(!r.ok)throw Error(j.error||'تعذر الإرسال');msg.textContent='✅ تم إرسال العمل للموجّه الصحي للمراجعة قبل النشر';document.getElementById('workTitle').value='';document.getElementById('workDesc').value=''}catch(e){msg.textContent='تعذر إرسال العمل. حاول لاحقًا.'}}
-async function renderWorks(){try{const r=await fetch('https://naama-health-api.ysjalmalki.workers.dev/api/works'),j=await r.json();document.getElementById('works').replaceChildren();if(!j.works.length){document.getElementById('works').textContent='لا توجد أعمال معتمدة حتى الآن';return}for(const w of j.works){const c=document.createElement('div');c.className='card';for(const [tag,val] of [['h3',w.title],['p',w.description],['small','إعداد: '+w.display_name]]){const e=document.createElement(tag);e.textContent=val;c.append(e)}document.getElementById('works').append(c)}}catch{document.getElementById('works').textContent='تعذر تحميل الأعمال'}}
+
+async function renderWorks() {
+  const container = document.getElementById("works");
+  if (!container) return;
+
+  try {
+    const response = await fetch(
+      "https://naama-health-api.ysjalmalki.workers.dev/api/works"
+    );
+
+    if (!response.ok) throw new Error("Load failed");
+
+    const data = await response.json();
+    const works = Array.isArray(data.works) ? data.works : [];
+
+    container.replaceChildren();
+
+    if (works.length === 0) {
+      container.textContent = "لا توجد أعمال معتمدة للنشر حاليًا";
+      return;
+    }
+
+    for (const work of works) {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      const title = document.createElement("h3");
+      title.textContent = work.work_title || "عمل طلابي";
+
+      const student = document.createElement("p");
+      student.textContent =
+        "إعداد: " + (work.student_name || "طالب مشارك");
+
+      const grade = document.createElement("p");
+      grade.textContent =
+        "الصف: " + (work.grade || "غير محدد");
+
+      card.append(title, student, grade);
+      container.appendChild(card);
+    }
+  } catch (error) {
+    container.textContent = "تعذر تحميل الأعمال";
+  }
+}
+
 renderWorks();fetch('/api/announcement').then(r=>r.json()).then(j=>{if(j.body){const n=document.createElement('div');n.className='intro';n.textContent='📣 '+j.body;document.getElementById('home').prepend(n)}}).catch(()=>{});
 </script></body></html>
