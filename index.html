@@ -175,13 +175,12 @@ if (program[1] === "أساسيات الإسعافات الأولية") {
     "تعلم متى تطلب الإسعاف وكيف تتصرف بأمان عند حدوث طارئ.";
 
   const videoLink = document.createElement("a");
-  videoLink.href =
-    "https://www.spsc.gov.sa/en/home/empoweringchildren";
+ videoLink.href = "https://www.youtube.com/watch?v=Qaopm8tUM_I";
   videoLink.target = "_blank";
   videoLink.rel = "noopener noreferrer";
-  videoLink.textContent = "▶️ فتح المادة المرئية التعليمية";
-  videoLink.style.cssText =
-    "display:inline-block;background:#12675c;color:white;padding:12px;border-radius:10px;text-decoration:none;";
+  
+ videoLink.textContent = "▶️ شاهد فيديو: متى نتصل بالإسعاف 997؟";
+    videoLink.style.cssText ="display:inline-block;background:#12675c;color:white;padding:12px;border-radius:10px;text-decoration:none;";
 
   videoSection.append(videoTitle, videoText, videoLink);
   details.appendChild(videoSection);
