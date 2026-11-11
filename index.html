@@ -163,6 +163,31 @@ if (program[1] === "أساسيات الإسعافات الأولية") {
 }
   
 if (program[1] === "أساسيات الإسعافات الأولية") {
+  const videoSection = document.createElement("div");
+  videoSection.style.cssText =
+    "background:#eef8ff;padding:16px;border-radius:14px;margin:16px 0;text-align:center;";
+
+  const videoTitle = document.createElement("h3");
+  videoTitle.textContent = "🎬 شاهد وتعلّم";
+
+  const videoText = document.createElement("p");
+  videoText.textContent =
+    "تعلم متى تطلب الإسعاف وكيف تتصرف بأمان عند حدوث طارئ.";
+
+  const videoLink = document.createElement("a");
+  videoLink.href =
+    "https://www.spsc.gov.sa/en/home/empoweringchildren";
+  videoLink.target = "_blank";
+  videoLink.rel = "noopener noreferrer";
+  videoLink.textContent = "▶️ فتح المادة المرئية التعليمية";
+  videoLink.style.cssText =
+    "display:inline-block;background:#12675c;color:white;padding:12px;border-radius:10px;text-decoration:none;";
+
+  videoSection.append(videoTitle, videoText, videoLink);
+  details.appendChild(videoSection);
+}
+
+if (program[1] === "أساسيات الإسعافات الأولية") {
   const emergency = document.createElement("div");
   emergency.style.cssText =
     "background:#fff5f0;padding:16px;border-radius:14px;margin-top:15px;text-align:center;";
