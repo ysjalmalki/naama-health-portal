@@ -125,6 +125,38 @@ guidance.textContent =
   "🛡️ عند حدوث طارئ، حافظ على سلامتك واطلب مساعدة شخص بالغ أو اتصل بالطوارئ.";
 
 details.append(heading, content, guidance);
+  
+if (program[1] === "أساسيات الإسعافات الأولية") {
+  const emergency = document.createElement("div");
+  emergency.style.cssText =
+    "background:#fff5f0;padding:16px;border-radius:14px;margin-top:15px;text-align:center;";
+
+  const emergencyTitle = document.createElement("h3");
+  emergencyTitle.textContent = "🚨 أرقام الطوارئ السعودية";
+  emergency.appendChild(emergencyTitle);
+
+  const numbers = [
+    ["🚑 الهلال الأحمر السعودي", "997"],
+    ["🚒 الدفاع المدني السعودي", "998"],
+    
+    ["🏥 وزارة الصحة للاستشارات الطبية", "937"]
+  ];
+
+  for (const [name, number] of numbers) {
+    const line = document.createElement("p");
+    line.style.cssText = "font-size:18px;margin:12px 0;";
+    line.textContent = name + " : " + number;
+    emergency.appendChild(line);
+  }
+
+  const note = document.createElement("p");
+  note.textContent =
+    "عند حدوث طارئ حقيقي، ابتعد عن الخطر واطلب مساعدة شخص بالغ. لا تتصل بالطوارئ للتجربة.";
+  emergency.appendChild(note);
+
+  details.appendChild(emergency);
+}
+
 
 startButton.onclick = () => {
   const opening = details.style.display === "none";
