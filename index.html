@@ -6,13 +6,48 @@
 body{font-family:Tahoma,'Segoe UI',Arial,sans-serif;background:radial-gradient(circle at 10% 12%,#eaf7ff 0,transparent 32%),radial-gradient(circle at 85% 40%,#fff2e9 0,transparent 29%),#f5f9ff}
 .hero{padding-top:52px;padding-bottom:54px;background:linear-gradient(118deg,#087f94 0%,#3579ce 48%,#8156c8 100%);border-radius:0 0 44px 44px;box-shadow:0 14px 32px #1b659c25}
 .hero:before{content:'✦  ✳  ✦';position:absolute;left:15%;bottom:4px;font-size:70px;opacity:.14;letter-spacing:24px}.hero h1{font-weight:900;letter-spacing:-.7px;text-shadow:0 2px 12px #06395322}
-.wrap{max-width:1200px}.nav{position:sticky;top:8px;z-index:10;background:#ffffffed;backdrop-filter:blur(12px);padding:12px;border-radius:23px;box-shadow:0 9px 28px #123c6518;justify-content:center}.nav button{box-shadow:none;transition:transform .15s,background .15s;border-radius:13px}.nav button:hover{transform:translateY(-2px);background:#e7f4ff}.nav button.active{background:linear-gradient(120deg,#078da1,#526acb);box-shadow:0 5px 13px #1688a43d}
+.wrap{max-width:1400px}.nav{position:sticky;top:8px;z-index:10;background:#ffffffed;backdrop-filter:blur(12px);padding:12px;border-radius:23px;box-shadow:0 9px 28px #123c6518;justify-content:center}.nav button{box-shadow:none;transition:transform .15s,background .15s;border-radius:13px}.nav button:hover{transform:translateY(-2px);background:#e7f4ff}.nav button.active{background:linear-gradient(120deg,#078da1,#526acb);box-shadow:0 5px 13px #1688a43d}
 .card{box-shadow:0 12px 35px #183f6710;border:1px solid #e1ebf6;transition:transform .18s,box-shadow .18s}.card:hover{transform:translateY(-3px);box-shadow:0 16px 35px #183f671a}.card h3{color:#14618a}.intro{background:linear-gradient(100deg,#fff4d8,#fff,#e5f6ff);border:1px solid #ffe2a2;box-shadow:0 9px 24px #9c781a10;font-size:1.06rem}
 .section>h2{font-size:clamp(22px,2.8vw,31px);color:#174c7a;margin:24px 0 12px}.btn{background:linear-gradient(120deg,#068e9e,#4773cc);box-shadow:0 5px 14px #2375ae22}.btn:hover{filter:brightness(1.08)}input:focus,select:focus,textarea:focus{outline:3px solid #92d8f777;border-color:#1289a4}.footer{border-top:1px solid #dce7f4;background:#fff9}
 @media(max-width:700px){.hero{border-radius:0 0 25px 25px;padding-top:30px;padding-bottom:35px}.nav{top:0;border-radius:0 0 17px 17px}.nav button{font-size:13px;padding:9px 6px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 
 /* تحسين هوية بوابة نعامة الصحية */
+  
+/* تحسين عرض البطاقات والأقسام */
+.wrap{
+  width:94%;
+  max-width:1400px;
+  margin-inline:auto;
+}
+.card{
+  min-width:0;
+  padding:24px;
+  font-size:17px;
+  line-height:1.8;
+}
+.card h3{
+  font-size:21px;
+  line-height:1.5;
+}
+.card .emoji{
+  font-size:38px;
+}
+@media(max-width:700px){
+  .wrap{width:96%;}
+  .card{padding:16px;font-size:15px;}
+  .card h3{font-size:18px;}
+}
+
+/* توسيط عنوان بوابة نعامة الصحية */
+.hero{
+  text-align:center !important;
+}
+.hero h1{
+  margin-inline:auto;
+  text-align:center;
+}
+
 .hero{
   min-height:210px;
   padding-inline:135px !important;
