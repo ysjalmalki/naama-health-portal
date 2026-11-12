@@ -160,6 +160,38 @@ body{
   color:#ffffff;
 }
 
+/* تحسين وضوح البطاقات والخطوط */
+#home .grid{
+  gap:24px;
+}
+#home .card{
+  min-height:160px;
+  padding:26px;
+  text-align:center;
+}
+#home .card h3{
+  font-size:23px;
+  font-weight:700;
+  color:#176b53;
+}
+#home .card .emoji{
+  font-size:44px;
+}
+#home .card p,
+#home .card span{
+  font-size:16px;
+}
+.nav button{
+  font-size:15px;
+  font-weight:600;
+}
+@media(max-width:600px){
+  #home .card{
+    min-height:130px;
+    padding:18px;
+  }
+}
+
 </style></head><body>
 <header class="hero" style="position:relative;padding-inline:clamp(65px,12vw,115px)">
 <img src="education.png" alt="شعار وزارة التعليم" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);width:clamp(44px,8vw,85px);max-height:85px;object-fit:contain;background:rgba(255,255,255,.95);padding:8px;border-radius:14px;box-sizing:border-box;background:rgba(255,255,255,.95);padding:8px;border-radius:14px;box-sizing:border-box">
