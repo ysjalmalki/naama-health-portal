@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>البرامج الصحية التفاعلية | بوابة نعامة الصحية</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#f3f7f6;color:#193b36;line-height:1.9}
+header{background:linear-gradient(120deg,#176b53,#194d65);color:white;text-align:center;padding:32px 16px}
+header h1{margin:0;font-size:27px}
+header p{margin:6px 0}
+main{max-width:1050px;margin:25px auto;padding:0 15px}
+section{background:white;border:1px solid #dce9e4;border-radius:16px;padding:24px;margin-bottom:20px}
+h2{color:#176b53;margin-top:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:15px}
+.lesson{border:1px solid #dce9e4;background:#f8fbfa;border-radius:13px;padding:16px}
+.lesson svg{width:100%;height:145px}
+button,.btn{display:inline-block;border:0;border-radius:10px;padding:12px 20px;background:#176b53;color:white;font:inherit;cursor:pointer;text-decoration:none;margin:6px 3px}
+button:hover,.btn:hover{background:#10543f}
+button:disabled{opacity:.5;cursor:default}
+input{font:inherit;padding:12px;width:100%;max-width:420px;border:1px solid #a8c4bc;border-radius:9px}
+.option{display:block;width:100%;text-align:right;background:#edf5f1;color:#193b36;border:1px solid #b7d1c7}
+.option:hover{background:#dbeee5}
+.option.correct{background:#d4f5df}
+.option.wrong{background:#ffe0df}
+#feedback{font-weight:bold;min-height:30px}
+#certificate{display:none}
+.certificate{border:5px double #176b53;padding:35px;text-align:center;background:#fff}
+.certificate h2{font-size:30px}
+.certificate .student{font-size:28px;font-weight:bold;color:#176b53}
+.muted{color:#607773}
+footer{text-align:center;padding:22px}
+@media print{
+header,main>section,footer,.no-print{display:none!important}
+main{margin:0;max-width:none;padding:0}
+#certificate{display:block!important;border:0!important}
+.certificate{min-height:85vh;padding:70px 25px}
+}
+</style>
+</head>
+<body>
+<header>
+<p>تعليم جازان | مدرسة نعامة الابتدائية</p>
+<h1>بوابة نعامة الصحية</h1>
+<p>برنامج أساسيات الإسعافات الأولية</p>
+</header>
+
+<main>
+<section>
+<h2>مرحبًا بك في البرنامج</h2>
+<p>ستتعلم كيف تحافظ على سلامتك، وتطلب المساعدة من شخص بالغ، وتتعرف على أهمية الاتصال بالإسعاف عند الطوارئ.</p>
+<p><strong>مراحل البرنامج:</strong> اقرأ الدروس، شاهد الفيديو، ثم أجب عن خمسة أسئلة لتحصل على شهادتك.</p>
+</section>
+
+<section>
+<h2>الدروس المصورة</h2>
+<div class="grid">
+<div class="lesson">
+<svg viewBox="0 0 260 145" role="img" aria-label="درع الحماية">
+<rect width="260" height="145" rx="14" fill="#e5f3eb"/>
+<path d="M130 22 L185 43 V82 Q178 115 130 132 Q82 115 75 82 V43 Z" fill="#208260"/>
+<path d="M110 78 L125 94 L154 59" fill="none" stroke="white" stroke-width="10" stroke-linecap="round"/>
+</svg>
+<h3>1. أحافظ على سلامتي</h3>
+<p>ابتعد عن النار والكهرباء والأدوات الحادة والأماكن الخطرة. لا تعرّض نفسك للخطر أثناء محاولة مساعدة الآخرين.</p>
+</div>
+<div class="lesson">
+<svg viewBox="0 0 260 145" role="img" aria-label="طفل يطلب المساعدة">
+<rect width="260" height="145" rx="14" fill="#e8f0fa"/>
+<circle cx="130" cy="46" r="22" fill="#e5aa7a"/>
+<path d="M107 39 Q130 6 153 39" fill="#39332e"/>
+<path d="M94 133 Q95 75 130 75 Q165 75 166 133" fill="#4085b0"/>
+<path d="M162 91 L206 47" stroke="#e5aa7a" stroke-width="15" stroke-linecap="round"/>
+<circle cx="210" cy="37" r="12" fill="#e5aa7a"/>
+</svg>
+<h3>2. أطلب المساعدة</h3>
+<p>إذا رأيت شخصًا مصابًا، أخبر المعلم أو أحد البالغين فورًا. لا تحاول القيام بإجراء طبي لا تعرفه.</p>
+</div>
+<div class="lesson">
+<svg viewBox="0 0 260 145" role="img" aria-label="سيارة إسعاف">
+<rect width="260" height="145" rx="14" fill="#e5f3f7"/>
+<rect x="35" y="55" width="140" height="56" rx="8" fill="#fff" stroke="#36728a" stroke-width="4"/>
+<path d="M175 75 H213 L230 98 V111 H175 Z" fill="#fff" stroke="#36728a" stroke-width="4"/>
+<path d="M105 67 V97 M90 82 H120" stroke="#d63242" stroke-width="10"/>
+<circle cx="75" cy="114" r="14" fill="#354b58"/>
+<circle cx="198" cy="114" r="14" fill="#354b58"/>
+<rect x="55" y="42" width="34" height="10" rx="5" fill="#d63242"/>
+</svg>
+<h3>3. أتصل بالإسعاف</h3>
+<p>في الحالات الطبية الطارئة، اطلب من شخص بالغ الاتصال بالإسعاف على الرقم <strong>997</strong>، مع توضيح المكان والحالة بهدوء.</p>
+</div>
+</div>
+</section>
+
+<section>
+<h2>الفيديو التعليمي</h2>
+<p>شاهد فيديو توعويًا عن التصرف المناسب في حالات الطوارئ وطلب المساعدة.</p>
+<a class="btn" href="https://www.youtube.com/watch?v=Qaopm8tUM_I" target="_blank" rel="noopener noreferrer">▶ مشاهدة الفيديو التعليمي</a>
+<p class="muted">يفتح الفيديو في صفحة جديدة، ويتطلب اتصالًا بالإنترنت.</p>
+</section>
+
+<section id="exam">
+<h2>الاختبار التفاعلي</h2>
+<p>أجب عن الأسئلة الخمسة. تحصل على الشهادة مباشرة إذا حققت 3 درجات أو أكثر.</p>
+<div id="quizBox">
+<label for="studentName"><strong>اسم الطالب للشهادة</strong></label>
+<p><input id="studentName" placeholder="اكتب الاسم الكامل" maxlength="80" autocomplete="name"></p>
+<button id="startBtn" onclick="startQuiz()">ابدأ الاختبار</button>
+<p id="message"></p>
+</div>
+<div id="questionBox" style="display:none">
+<p id="counter"></p>
+<h3 id="question"></h3>
+<div id="answers"></div>
+<p id="feedback" aria-live="polite"></p>
+<button id="nextBtn" onclick="nextQuestion()" style="display:none">السؤال التالي</button>
+</div>
+<div id="resultBox" style="display:none" aria-live="polite"></div>
+</section>
+
+<section id="certificate">
+<div class="certificate">
+<p>وزارة التعليم | تعليم جازان</p>
+<p>مدرسة نعامة الابتدائية</p>
+<h2>🏅 شهادة اجتياز برنامج صحي</h2>
+<p>تُمنح هذه الشهادة للطالب</p>
+<div id="certificateName" class="student"></div>
+<p>لاجتيازه بنجاح برنامج</p>
+<h2 id="certificateProgram">أساسيات الإسعافات الأولية</h2>
+<p id="certificateScore"></p>
+<p id="certificateDate"></p>
+<hr>
+<p>الموجه الصحي / يحيى سلمان المالكي</p>
+<p>مدير المدرسة / عبدالله أحمد زيد</p>
+</div>
+<p class="no-print" style="text-align:center">
+<button onclick="window.print()">🖨 طباعة الشهادة أو حفظها PDF</button>
+</p>
+</section>
+</main>
+
+<footer>
+مدرسة نعامة الابتدائية | بوابة نعامة الصحية
+</footer>
+
+<script>
+"use strict";
+const programTitle="أساسيات الإسعافات الأولية";
+const questions=[
+{q:"ما أول خطوة عند رؤية مكان خطر؟",a:["أدخل المكان بسرعة","أحافظ على سلامتي وأبتعد عن الخطر","ألمس الأدوات الخطرة"],correct:1,why:"السلامة الشخصية تأتي أولًا."},
+{q:"ماذا تفعل إذا شاهدت طالبًا مصابًا؟",a:["أبلغ المعلم أو شخصًا بالغًا","أتجاهل الأمر","أعطيه دواءً من عندي"],correct:0,why:"إبلاغ شخص بالغ يساعد على تقديم المساعدة المناسبة."},
+{q:"ما رقم الإسعاف في السعودية؟",a:["998","937","997"],correct:2,why:"997 هو رقم الإسعاف."},
+{q:"ماذا تقول عند طلب الإسعاف؟",a:["أوضح مكان الحالة وما حدث","أعطي معلومات غير صحيحة","أنهي المكالمة فورًا"],correct:0,why:"توضيح الموقع والحالة يساعد فرق الإسعاف."},
+{q:"إذا لم تعرف طريقة إسعاف المصاب، ماذا تفعل؟",a:["أجرب أي طريقة","أطلب مساعدة شخص مؤهل","أعطيه دواء"],correct:1,why:"الإجراءات غير المعروفة قد تضر المصاب."}
+];
+let index=0,score=0,answered=false,student="";
+function el(id){return document.getElementById(id)}
+function startQuiz(){
+student=el("studentName").value.trim().replace(/\s+/g," ");
+if(student.length<3){
+el("message").textContent="يرجى إدخال اسم الطالب أولًا.";
+return;
+}
+index=0;score=0;
+el("quizBox").style.display="none";
+el("resultBox").style.display="none";
+el("certificate").style.display="none";
+el("questionBox").style.display="block";
+showQuestion();
+}
+function showQuestion(){
+answered=false;
+const item=questions[index];
+el("counter").textContent="السؤال "+(index+1)+" من "+questions.length;
+el("question").textContent=item.q;
+el("answers").replaceChildren();
+el("feedback").textContent="";
+el("nextBtn").style.display="none";
+item.a.forEach((answer,i)=>{
+const b=document.createElement("button");
+b.className="option";
+b.textContent=answer;
+b.onclick=()=>choose(i);
+el("answers").appendChild(b);
+});
+}
+function choose(choice){
+if(answered)return;
+answered=true;
+const item=questions[index];
+const correct=choice===item.correct;
+if(correct)score++;
+const buttons=el("answers").querySelectorAll("button");
+buttons.forEach((b,i)=>{
+b.disabled=true;
+if(i===item.correct)b.classList.add("correct");
+else if(i===choice)b.classList.add("wrong");
+});
+el("feedback").textContent=(correct?"إجابة صحيحة! ":"إجابة غير صحيحة. ")+item.why;
+el("nextBtn").textContent=index===questions.length-1?"عرض النتيجة":"السؤال التالي";
+el("nextBtn").style.display="inline-block";
+}
+function nextQuestion(){
+index++;
+if(index<questions.length){showQuestion();return;}
+el("questionBox").style.display="none";
+const result=el("resultBox");
+result.style.display="block";
+result.replaceChildren();
+const heading=document.createElement("h3");
+heading.textContent="نتيجتك: "+score+" من "+questions.length;
+result.appendChild(heading);
+const note=document.createElement("p");
+note.textContent=score>=3?"تهانينا! لقد اجتزت البرنامج، وشهادتك جاهزة.":"لم تحقق درجة الاجتياز. يمكنك مراجعة الدروس وإعادة الاختبار.";
+result.appendChild(note);
+if(score>=3){
+el("certificateName").textContent=student;
+el("certificateProgram").textContent=programTitle;
+el("certificateScore").textContent="النتيجة: "+score+" من 5";
+el("certificateDate").textContent="تاريخ الاجتياز: "+new Date().toLocaleDateString("ar-SA");
+el("certificate").style.display="block";
+el("certificate").scrollIntoView({behavior:"smooth"});
+}else{
+const retry=document.createElement("button");
+retry.textContent="إعادة الاختبار";
+retry.onclick=()=>{
+index=0;score=0;
+result.style.display="none";
+el("questionBox").style.display="block";
+showQuestion();
+};
+result.appendChild(retry);
+}
+}
+</script>
+</body>
+</html>
