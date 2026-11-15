@@ -816,7 +816,7 @@ if (!widget.dataset.widgetId && window.turnstile?.render) {
     const widgetId = window.turnstile.render(widget, {
       sitekey: widget.dataset.sitekey,
    
-appearance: "interaction-only",
+appearance: "always",
 callback: function () {
   document.getElementById("submitSickLeave").disabled = false;
 },
